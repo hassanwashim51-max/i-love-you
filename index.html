@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday My Love</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(180deg,#ffe6f0,#fff);
+  overflow-x:hidden;
+  color:#c2185b;
+}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:60px 20px;
+}
+
+header h1{
+  font-size:3rem;
+}
+
+header p{
+  font-size:1.2rem;
+  margin-top:10px;
+}
+
+/* PHOTO SECTION */
+.photos{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  padding:40px 20px;
+}
+
+.photos img{
+  width:200px;
+  height:260px;
+  object-fit:cover;
+  border-radius:20px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.2);
+  animation:fadeUp 2s ease;
+}
+
+/* 365 REASONS */
+.reasons{
+  max-width:900px;
+  margin:auto;
+  padding:40px 20px;
+  text-align:center;
+}
+
+.reasons h2{
+  margin-bottom:20px;
+}
+
+.reason-box{
+  background:#fff;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  font-size:1.1rem;
+  min-height:80px;
+}
+
+button{
+  margin-top:20px;
+  padding:12px 30px;
+  border:none;
+  border-radius:30px;
+  background:#ff69b4;
+  color:white;
+  font-size:1rem;
+  cursor:pointer;
+}
+
+/* TEDDY */
+.teddy{
+  position:fixed;
+  bottom:20px;
+  right:10px;
+  width:140px;
+  animation:float 4s ease-in-out infinite;
+}
+
+/* HEART TREE */
+.tree{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:220px;
+}
+
+.heart{
+  position:absolute;
+  color:#ff4d88;
+  animation:rise 6s infinite;
+  opacity:0.8;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-20px);}
+}
+
+@keyframes rise{
+  from{transform:translateY(0);opacity:1;}
+  to{transform:translateY(-300px);opacity:0;}
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  color:#ff69b4;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC (AUTOPLAY + LOOP) -->
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<header>
+  <h1>🎉 Happy Birthday 🎂</h1>
+  <p>For my Bubu 💖</p>
+</header>
+
+<!-- PHOTOS -->
+<section class="photos">
+  <img src="photo1.jpg">
+  <img src="photo2.jpg">
+  <img src="photo3.jpg">
+</section>
+
+<!-- 365 REASONS -->
+<section class="reasons">
+  <h2>365 Reasons Why I Love You 💗</h2>
+  <div class="reason-box" id="reason">Click below 💕</div>
+  <button onclick="nextReason()">Next Reason</button>
+</section>
+
+<!-- TEDDY -->
+<img src="https://i.imgur.com/6XH7F2D.png" class="teddy">
+
+<!-- HEART TREE -->
+<div class="tree" id="tree"></div>
+
+<footer>
+  Made with endless love 💕
+</footer>
+
+<script>
+/* 365 REASONS */
+const reasons=[
+"You make my world brighter",
+"You smile even on bad days",
+"You are my safe place",
+"You understand me",
+"You care deeply",
+"You are my best friend",
+"You make me laugh",
+"You stay with me",
+"You are kind",
+"You are my happiness"
+];
+
+// auto-fill till 365
+while(reasons.length<365){
+  reasons.push("Because I love everything about you 💖");
+}
+
+let index=0;
+function nextReason(){
+  document.getElementById("reason").innerText =
+    `Reason ${index+1}: `+reasons[index];
+  index=(index+1)%365;
+}
+
+/* HEART TREE */
+for(let i=0;i<15;i++){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤";
+  h.style.left=Math.random()*200+"px";
+  h.style.fontSize=Math.random()*20+20+"px";
+  h.style.animationDelay=Math.random()*5+"s";
+  document.getElementById("tree").appendChild(h);
+}
+</script>
+
+</body>
+</html>
